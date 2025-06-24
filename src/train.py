@@ -16,7 +16,7 @@ mlflow.start_run()
 
 # --- LER OS DADOS ---
 print("Lendo os dados...")
-df = pd.read_csv(args.input_data)
+df = pd.read_csv(args.input_data, encoding='latin-1')
 
 # --- PREPARAR DADOS ---
 target_column = 'ROAS'

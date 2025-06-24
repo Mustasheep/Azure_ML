@@ -1,6 +1,5 @@
-# Importações do SDK do Azure ML
 from azure.ai.ml import MLClient, Input, command
-from azure.ai.ml.entities import Data
+from azure.ai.ml.entities import Data, Environment
 from azure.ai.ml.constants import AssetTypes
 from azure.identity import DefaultAzureCredential
 
@@ -8,9 +7,17 @@ from azure.identity import DefaultAzureCredential
 credential = DefaultAzureCredential()
 ml_client = MLClient.from_config(credential=credential)
 
-# Deifnir a entrada de dados
+# Definir a entrada de dados
 data_asset = ml_client.data.get(name="meta_ads_data", version="2")
 job_input = Input(type=AssetTypes.URI_FILE, path=data_asset.id)
+
+# Criar um ambiente customizado
+my_custom_environment = Environment(
+    name="roas-training-environment", # Nome que o ambiente terá no Azure
+    description="Ambiente customizado para treinar o modelo de ROAS",
+    image="mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu22.04",
+    conda_file="./environment/training_env.yml"
+)
 
 # Definir o comando que será executado
 job_command = command(
@@ -21,7 +28,7 @@ job_command = command(
     },
 
     # Ambiente de software
-    environment="AzureML-sklearn-1.1-ubuntu22.04",
+    environment=my_custom_environment, 
     compute="cluster-cpu-dp100",
 
     # Interface do Azure
@@ -30,6 +37,6 @@ job_command = command(
 )
 
 print("Submetendo o trabalho ao Azure Machine Learning...")
-retuned_job = ml_client.jobs.create_or_update(job_command)
+returned_job = ml_client.jobs.create_or_update(job_command)
 
-print(f"Trabalho submetido. Acompanhe em: {retuned_job.studio_url}")
+print(f"Trabalho submetido. Acompanhe em: {returned_job.studio_url}")
