@@ -8,7 +8,7 @@ credential = DefaultAzureCredential()
 ml_client = MLClient.from_config(credential=credential)
 
 # Definir a entrada de dados
-data_asset = ml_client.data.get(name="meta_ads_data", version="2")
+data_asset = ml_client.data.get(name="meta_ads_data", version="4")
 job_input = Input(type=AssetTypes.URI_FILE, path=data_asset.id)
 
 # Criar um ambiente customizado
