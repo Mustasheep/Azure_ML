@@ -5,13 +5,13 @@
 ```
 meu-projeto-dp100/
 │
-├── .gitignore          # Arquivo para ignorar arquivos desnecessários no Git
-├── README.md           # A porta de entrada do seu projeto
+├── .gitignore          
+├── README.md           
 ├── requirements.txt    # Dependências Python para o ambiente local
 │
 ├── data/
 │   ├── sample.csv      # Uma pequena amostra dos dados para testes rápidos
-│   └── README.md       # Explicação de onde obter os dados completos
+│   └── README.md       # Explicação de onde obter os dados
 │
 ├── notebooks/
 │   ├── 1-data-exploration.ipynb   # Análise exploratória, visualizações (EDA)
@@ -23,6 +23,6 @@ meu-projeto-dp100/
 └── src/
     ├── train.py        # Script principal de treinamento do modelo
     ├── evaluate.py     # Script para avaliar o modelo com métricas
-    ├── deploy.py       # (Opcional) Script para implantar o modelo
+    ├── deploy.py       # Script para implantar o modelo
     └── utils.py        # Funções auxiliares usadas por outros scripts
 ```
