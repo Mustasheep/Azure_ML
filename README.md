@@ -18,7 +18,7 @@ meu-projeto-dp100/
 │   └── 2-model-prototyping.ipynb  # Testes rápidos e prototipagem de modelos
 │
 ├── environment/
-│   └── training_environment.yml   # Definição do ambiente Conda para treinamento no Azure ML
+│   └── training_env.yml   # Definição do ambiente Conda para treinamento no Azure ML
 │
 └── src/
     ├── train.py        # Script principal de treinamento do modelo
