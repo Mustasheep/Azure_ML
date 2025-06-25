@@ -24,6 +24,5 @@ meu-projeto-dp100/
 │
 └── src/
     ├── train.py              # Script principal de treinamento do modelo
-    ├── evaluate.py           # Script para avaliar o modelo com métricas
     └── utils.py              # Funções auxiliares usadas por outros scripts
 ```
