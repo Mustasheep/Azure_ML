@@ -7,6 +7,6 @@ dependencies:
   - pip:
     - scikit-learn
     - pandas
-    - mlflow
-    - azureml-mlflow
+    - mlflow==2.14.1
+    - azureml-mlflow==1.55.0
     - matplotlib
