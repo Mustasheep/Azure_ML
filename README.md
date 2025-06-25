@@ -49,24 +49,24 @@ O projeto consiste em prever o **Retorno do Investimento em Anúncios (ROAS)** c
 ```
 meu-projeto-dp100/
 │
-├── data/                  # Contém amostras de dados e informações sobre o dataset.
-├── deployment/            # Scripts de pontuação (scoring) para os endpoints.
+├── data/                       # Contém amostras de dados e informações sobre o dataset.
+├── deployment/                 # Scripts de pontuação (scoring) para os endpoints.
 │   ├── batch_score.py
 │   └── score.py
-├── environment/           # Definição do ambiente de software customizado.
+├── environment/                # Definição do ambiente de software customizado.
 │   └── training_env.yml
-├── src/                   # Código-fonte principal do projeto.
+├── src/                        # Código-fonte principal do projeto.
 │   ├── train.py
-│   └── utils.py           # (Conceitual) Funções auxiliares.
+│   └── utils.py                # Funções auxiliares.
 |
 ├── .gitignore
 ├── LICENSE
-├── README.md              # Este arquivo.
-├── deploy_batch.py        # Orquestra a implantação do Batch Endpoint.
-├── deploy_model.py        # Orquestra a implantação do Online Endpoint.
-├── invoke_batch_endpoint.py # Inicia um trabalho de inferência em lote.
-├── requirements.txt       # Dependências locais para interagir com o SDK.
-└── run_training_job.py    # Orquestra o trabalho de treinamento do modelo.
+├── README.md
+├── deploy_batch.py                 # Orquestra a implantação do Batch Endpoint.
+├── deploy_model.py                 # Orquestra a implantação do Online Endpoint.
+├── invoke_batch_endpoint.py        # Inicia um trabalho de inferência em lote.
+├── requirements.txt                # Dependências locais para interagir com o SDK.
+└── run_training_job.py             # Orquestra o trabalho de treinamento do modelo.
 ```
 
 ---
