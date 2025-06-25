@@ -10,7 +10,8 @@ meu-projeto-dp100/
 │   └── README.md             # Explicação de onde obter os dados
 │
 ├── deployment/
-│   └── score.py              # Script para prever novas entradas
+│   ├── batch_score.py        # Script para prever lotes de dados
+│   └── score.py              # Script para prever novas entradas em tempo real
 |
 ├── environment/
 │   └── training_env.yml      # Definição do ambiente Conda para treinamento no Azure ML
@@ -21,8 +22,9 @@ meu-projeto-dp100/
 |
 ├── .gitignore          
 ├── LICENSE  
-├── README.md       
-├── deploy_model.py           # Script para implantar o modelo
+├── README.md  
+├── deploy_batch.py           # Implantação que prevê ROAS em lote    
+├── deploy_model.py           # Script para implantar o modelo de previsão em tempo real
 ├── requirements.txt          # Dependências Python para o ambiente local
 └── run_training_job.py       # Script para implantar o modelo
 ```
