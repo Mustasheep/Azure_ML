@@ -13,6 +13,9 @@ meu-projeto-dp100/
 │   ├── sample.csv      # Uma pequena amostra dos dados para testes rápidos
 │   └── README.md       # Explicação de onde obter os dados
 │
+├── deployment/
+│   └── score.py        # Script para prever novas entradas
+│
 ├── notebooks/
 │   ├── 1-data-exploration.ipynb   # Análise exploratória, visualizações (EDA)
 │   └── 2-model-prototyping.ipynb  # Testes rápidos e prototipagem de modelos
