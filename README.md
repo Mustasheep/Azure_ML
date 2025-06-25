@@ -24,7 +24,8 @@ meu-projeto-dp100/
 ├── LICENSE  
 ├── README.md  
 ├── deploy_batch.py           # Implantação que prevê ROAS em lote    
-├── deploy_model.py           # Script para implantar o modelo de previsão em tempo real
-├── requirements.txt          # Dependências Python para o ambiente local
+├── deploy_model.py           # Implantação que prevê ROAS em tempo real
+├── invoke_batch_endpoint.py  # Invoca o endpoint para iniciar o trabalho em lote
+├── requirements.txt          
 └── run_training_job.py       # Script para implantar o modelo
 ```
