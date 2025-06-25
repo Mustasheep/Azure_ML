@@ -6,7 +6,8 @@
 meu-projeto-dp100/
 │
 ├── .gitignore          
-├── README.md           
+├── README.md
+├── LICENSE          
 ├── requirements.txt          # Dependências Python para o ambiente local
 ├── deploy_model.py           # Script para implantar o modelo
 ├── run_training_job.py       # Script para implantar o modelo
