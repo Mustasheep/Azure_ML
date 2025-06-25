@@ -1,4 +1,4 @@
-name: custom-sklearn-env-v2
+name: custom-sklearn-env-v3
 channels:
   - conda-forge
 dependencies:
@@ -10,3 +10,5 @@ dependencies:
     - mlflow==2.14.1
     - azureml-mlflow==1.55.0
     - matplotlib
+    - azureml-sdk 
+    - azureml-dataset-runtime
