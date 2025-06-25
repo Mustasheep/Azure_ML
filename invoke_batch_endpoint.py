@@ -12,7 +12,7 @@ endpoint_name = "endpoint-roas-batch"
 # Referenciar ao conjunto de dados
 input_data = Input(
     type=AssetTypes.URI_FILE,
-    path=f"azureml:dados-batch-input:1"
+    path=f"azureml:dados-batch-input:2"
 )
 
 # Invocar o endpoint para iniciar o trabalho em lote
