@@ -1,9 +1,9 @@
 import argparse
+import utils
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-# MUDANÇA 1: Importando a métrica correta
-from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_squared_error
 import mlflow
 import os
 
@@ -15,20 +15,21 @@ args = parser.parse_args()
 # Inicia o registro com MLflow
 mlflow.start_run()
 
-# --- LER OS DADOS ---
+# --- LER E PREPARAR OS DADOS ---
 print("Lendo os dados...")
 df = pd.read_csv(args.input_data, encoding='latin-1')
+utils.renomear_colunas(df)
+utils.selecionar_roas(df)
 
 # --- PREPARAR DADOS ---
-target_column = 'ROAS'
-features = ['Gasto (R$)', 'Alcance', 'Impressões', 'Cliques no Link']
+target_column = 'roas'
+features = ['gasto', 'alcance', 'impressoes', 'cliques_no_link']
 
 X = df[features]
 y = df[target_column]
 
 # Dividir em treino e teste
-# MUDANÇA 2: Corrigindo o nome da variável para y_test
-X_train, X_test, y_train, y_test = train_test_split(
+X_train, X_test, y_train, y_teste = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
@@ -39,13 +40,34 @@ model.fit(X_train, y_train)
 
 # --- AVALIAR O MODELO ---
 preds = model.predict(X_test)
-# MUDANÇA 3: Calculando a métrica correta com a variável correta
-mae = mean_absolute_error(y_test, preds)
+mae = mean_squared_error(y_teste, preds)
 print(f"Avaliação completa. Mean Absolute Error (MAE): {mae}")
 
 # --- REGISTRAR MÉTRICA COM MLFLOW ---
 mlflow.log_metric("mae", mae)
 print("Métrica 'mae' registrada no MLflow.")
+
+# --- GERAR E REGISTRAR GRÁFICO DE REGRESSÃO ---
+print("Gerando e registrando o gráfico de dispersão...")
+fig = plt.figure(figsize=(10, 7))
+plt.scatter(y_test, preds, alpha=0.5)
+plt.plot([y.min(), y.max()], [y.min(), y.max()], '--r', linewidth=2)
+plt.xlabel("ROAS Real")
+plt.ylabel("ROAS Previsto")
+plt.title("ROAS Real vs. Previsto")
+plt.grid(True)
+
+mlflow.log_figure(fig, "scatter_real_vs_previsto.png")
+print("Gráfico registrado como artefato no MLflow.")
+
+# --- SALVAR E REGISTRAR O MODELO ---
+print("Registrando o modelo no workspace...")
+mlflow.sklearn.log_model(
+    sk_model=model,
+    artifact_path="modelo_regressao_roas", 
+    registered_model_name="modelo-roas-dp100"
+)
+print("Modelo registrado com sucesso.")
 
 # Finaliza o registro com MLflow
 mlflow.end_run()
