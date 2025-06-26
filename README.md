@@ -8,6 +8,33 @@ O objetivo principal não é oferecer um software para uso direto, mas sim apres
 
 ---
 
+## Estrutura do Repositório
+
+```
+meu-projeto-dp100/
+│
+├── data/                       # Contém amostras de dados e informações sobre o dataset.
+├── deployment/                 # Scripts de pontuação (scoring) para os endpoints.
+│   ├── batch_score.py
+│   └── score.py
+├── environment/                # Definição do ambiente de software customizado.
+│   └── training_env.yml
+├── src/                        # Código-fonte principal do projeto.
+│   ├── train.py
+│   └── utils.py                # Funções auxiliares.
+|
+├── .gitignore
+├── LICENSE
+├── README.md
+├── deploy_batch.py                 # Orquestra a implantação do Batch Endpoint.
+├── deploy_model.py                 # Orquestra a implantação do Online Endpoint.
+├── invoke_batch_endpoint.py        # Inicia um trabalho de inferência em lote.
+├── requirements.txt                # Dependências locais para interagir com o SDK.
+└── run_training_job.py             # Orquestra o trabalho de treinamento do modelo.
+```
+
+---
+
 ## Tecnologias e Serviços Utilizados
 
 * **Plataforma Cloud:** Microsoft Azure
@@ -41,33 +68,6 @@ O projeto consiste em prever o **Retorno do Investimento em Anúncios (ROAS)** c
     * **Online Endpoint:** Para previsões instantâneas, ideais para integrações com aplicações.
     * **Batch Endpoint:** Para processar grandes volumes de dados de forma assíncrona.
 5.  **Inferência:** Scripts de invocação demonstram como consumir ambos os endpoints para obter previsões.
-
----
-
-## Estrutura do Repositório
-
-```
-meu-projeto-dp100/
-│
-├── data/                       # Contém amostras de dados e informações sobre o dataset.
-├── deployment/                 # Scripts de pontuação (scoring) para os endpoints.
-│   ├── batch_score.py
-│   └── score.py
-├── environment/                # Definição do ambiente de software customizado.
-│   └── training_env.yml
-├── src/                        # Código-fonte principal do projeto.
-│   ├── train.py
-│   └── utils.py                # Funções auxiliares.
-|
-├── .gitignore
-├── LICENSE
-├── README.md
-├── deploy_batch.py                 # Orquestra a implantação do Batch Endpoint.
-├── deploy_model.py                 # Orquestra a implantação do Online Endpoint.
-├── invoke_batch_endpoint.py        # Inicia um trabalho de inferência em lote.
-├── requirements.txt                # Dependências locais para interagir com o SDK.
-└── run_training_job.py             # Orquestra o trabalho de treinamento do modelo.
-```
 
 ---
 
